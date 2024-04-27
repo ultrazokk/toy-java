@@ -24,6 +24,21 @@ public class ToyRaffle {
             toys.add(toy);
         }
         return toy;
-    }
     
+    
+}
+
+    public void drawAndSave(int times, String filePath) {
+        try (FileWriter writer = new FileWriter(filePath)) {
+            for (int i = 0; i < times; i++) {
+                Toy drawnToy = draw();
+                if (drawnToy != null) {
+                    writer.write(drawnToy.getId() + " - " + drawnToy.getName() + "\n");
+
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
